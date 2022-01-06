@@ -9,7 +9,7 @@
        */
       // Format: https://api.github.com/repos/{owner}/{repo}/issues/
       var GITHUB_ISSUES_LINK =
-        "https://api.github.com/repos/nelsontky/gh-pages-url-shortener-db/issues/";
+        "https://api.github.com/repos/c1200/gh-pages-url-shortener-db/issues/";
       var PATH_SEGMENTS_TO_SKIP = 0;
 
       /**
@@ -42,6 +42,7 @@
             var payload = JSON.parse(xhr.response);
             var message = payload.message;
             var title = payload.title;
+            var userid = payload.user.id;
 
             // Workaround IE 11 lack of support for new URL()
             var url = document.createElement("a");
@@ -54,7 +55,7 @@
               !isUrl(title) ||
               url.hostname === location.hostname;
 
-            if (isInvalidUrl) {
+            if (isInvalidUrl || userid !== 40738690) { // 40738690 is c1200's id
               location.replace(homepage);
             } else {
               location.replace(title);

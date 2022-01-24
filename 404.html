@@ -3,6 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <title>Redirecting...</title>
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q9N18SX26R"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Q9N18SX26R');
+    </script>
+    
     <script>
       /**
        * Configuration goes here
@@ -59,6 +70,7 @@
               location.replace(homepage);
             } else {
               location.replace(title);
+              gtag("event", "redirect", { url: title });
             }
           } catch (e) {
             location.replace(homepage);
